@@ -10,7 +10,7 @@ while True:
             f"https://api.fda.gov/drug/ndc.json?search=openfda.upc:0{upc}"
         ).text
     )
-    try:
+    if "results" in response:
         results = response["results"][0]
         name = results["brand_name"]
         strength = results["active_ingredients"][0]["strength"]
@@ -37,6 +37,3 @@ while True:
         drugs.replace_one(identifier, product, True)
         print("Added to database")
         print("\n\n")
-    except:
-        print(response['error']['code'])
-        print(response['error']['message'])
