@@ -1,5 +1,3 @@
-import decimal
-from os import name
 import creds
 from pymongo import MongoClient
 from bson.decimal128 import Decimal128 as decimal
